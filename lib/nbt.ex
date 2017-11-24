@@ -1,6 +1,8 @@
 defmodule NBT do
   @moduledoc """
-  Documentation for NBT.
+  Parsing functions to convert NBT (Named Binary Tag) data into native Elixir
+  values. This library does not currently handle file management or
+  compression, both of those steps are left to the user.
   """
 
   alias NBT.Parser
