@@ -48,20 +48,19 @@ defmodule NBT do
          list_length::integer-size(32),
          data_and_rest::binary
        >>) do
-    {_list, _rest} =
-      partial_unfold(
-        {0, data_and_rest},
-        fn
-          {^list_length, _stream} ->
-            nil
+    partial_unfold(
+      {0, data_and_rest},
+      fn
+        {^list_length, _stream} ->
+          nil
 
-          {n, stream} ->
-            {value, rest} = take_value(type, stream)
+        {n, stream} ->
+          {value, rest} = take_value(type, stream)
 
-            {value, {n + 1, rest}}
-        end,
-        &elem(&1, 1)
-      )
+          {value, {n + 1, rest}}
+      end,
+      &elem(&1, 1)
+    )
   end
 
   defp take_value(10, data) do
