@@ -40,5 +40,5 @@ library.
 
 * [The Original Spec from Notch](http://web.archive.org/web/20110723210920/http://www.minecraft.net/docs/NBT.txt)
 * [A wiki page with the original test files](http://wiki.vg/NBT)
-* [The NBT page from the officail Minecraft wiki](https://minecraft.gamepedia.com/NBT_format)
+* [The NBT page from the official Minecraft wiki](https://minecraft.gamepedia.com/NBT_format)
 
