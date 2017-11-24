@@ -4,10 +4,12 @@ defmodule NBT.Mixfile do
   def project do
     [
       app: :nbt,
+      description: "Functions for parsing NBT files.",
       version: "0.1.0",
       elixir: "~> 1.5",
       start_permanent: Mix.env() == :prod,
       deps: deps(),
+      package: package(),
       dialyzer: [plt_add_deps: :transitive]
     ]
   end
@@ -26,6 +28,15 @@ defmodule NBT.Mixfile do
       {:dialyxir, "~> 0.5.1", only: [:dev], runtime: false},
       {:ex_doc, "~> 0.18.1", only: [:dev], runtime: false},
       {:mix_test_watch, "~> 0.5.0", only: [:dev], runtime: false}
+    ]
+  end
+
+  defp package() do
+    [
+      maintainers: ["William Ashton"],
+      licenses: ["MIT"],
+      links: %{"GitHub" => "https://github.com/Jwashton/nbt"},
+      source_url: "https://github.com/Jwashton/nbt"
     ]
   end
 end
