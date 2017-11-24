@@ -1,5 +1,7 @@
 # NBT
 
+[![Hex pm](http://img.shields.io/hexpm/v/nbt.svg?style=flat)](https://hex.pm/packages/nbt)
+
 Functions for parsing Named Binary Tag files, common to Minecraft save files.
 
 ## Installation
