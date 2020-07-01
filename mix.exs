@@ -26,7 +26,7 @@ defmodule NBT.Mixfile do
     [
       {:credo, "~> 0.8.10", only: [:dev, :test], runtime: false},
       {:dialyxir, "~> 0.5.1", only: [:dev], runtime: false},
-      {:ex_doc, "~> 0.18.1", only: [:dev], runtime: false},
+      {:ex_doc, "~> 0.22.1", only: [:dev], runtime: false},
       {:mix_test_watch, "~> 0.5.0", only: [:dev], runtime: false}
     ]
   end
