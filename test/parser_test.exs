@@ -150,4 +150,20 @@ defmodule NBT.ParserTest do
 
     assert Parser.take_next(input) == output
   end
+
+  test "take_next will identify a TAG_Long_Array" do
+    input = <<
+      12,
+      13::integer-size(16),
+      "phone numbers",
+      3::integer-size(32),
+      1112223333::integer-size(64),
+      1234567890::integer-size(64),
+      3125550690::integer-size(64)
+    >>
+
+    output = {{:long_array, "phone numbers", [1112223333, 1234567890, 3125550690]}, ""}
+
+    assert Parser.take_next(input) == output
+  end
 end

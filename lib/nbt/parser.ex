@@ -92,9 +92,9 @@ defmodule NBT.Parser do
     data =
       children
       |> Enum.reduce(%{}, fn
-           :end, compound -> compound
-           {_type, key, val}, compound -> Map.put(compound, key, val)
-         end)
+        :end, compound -> compound
+        {_type, key, val}, compound -> Map.put(compound, key, val)
+      end)
 
     {data, rest}
   end
@@ -122,6 +122,29 @@ defmodule NBT.Parser do
     {list, rest}
   end
 
+  defp take_value(12, <<array_length::integer-size(32), data_and_rest::binary>>) do
+    data = binary_part(data_and_rest, 0, array_length * 8)
+
+    rest = String.replace_prefix(data_and_rest, data, "")
+
+    step = fn
+      "" ->
+        nil
+
+      acc ->
+        <<next::integer-size(64), rest::binary>> = acc
+
+        {next, rest}
+    end
+
+    list =
+      data
+      |> Stream.unfold(step)
+      |> Enum.to_list()
+
+    {list, rest}
+  end
+
   @spec typename(1..11) :: atom()
   defp typename(1), do: :byte
   defp typename(2), do: :short
@@ -134,4 +157,5 @@ defmodule NBT.Parser do
   defp typename(9), do: :list
   defp typename(10), do: :compound
   defp typename(11), do: :int_array
+  defp typename(12), do: :long_array
 end
